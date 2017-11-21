@@ -100,6 +100,7 @@ class Spider(object):
         return self.sieve(result, 'src="(.*?%s)' % suffix)
 
     def download(self, url, path):
+        print(url, path)
         name = os.path.join(path, url.split('/')[-1])
         print('[OPR] Downloading %s to %s ..' % (url, name))
         data = self.get(url).content
