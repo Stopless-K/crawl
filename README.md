@@ -1,2 +1,5 @@
 # spider_lib
-personal crawling lib
+crawing utils
+
+##  example
+see ./example for details
