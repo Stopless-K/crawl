@@ -101,10 +101,8 @@ class Spider(object):
 
     def download(self, url, path):
         name = os.path.join(path, url.split('/')[-1])
-        print('[OPR] Downloading %s to %s ..' % (url, path))
-
-        data = self.get(url)
-        embed()
+        print('[OPR] Downloading %s to %s ..' % (url, name))
+        data = self.get(url).content
         with open(name, 'wb') as f:
-            f.write(data.content)
+            f.write(data)
         return True
