@@ -11,7 +11,7 @@ clean:
 	rm -rf ./run_log
 
 fast-push:
-	git add *
+	git add * &
 	git status 
 	git commit -m 'updated'
 	git push origin master
