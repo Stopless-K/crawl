@@ -3,7 +3,7 @@ try:
     from spider_lib import *
 except:
     from __init__ import *
-from IPython import embed
+# from IPython import embed
 import time, os, json
 
 origin_urls = ['https://snh48.info/pics/zhanghuaijin']
@@ -35,13 +35,20 @@ def get_person(origin_url):
     args = [{'origin_url': origin_url, 'pn': pn} \
             for pn in range(1, 1000)]
 
-    mp = MP(4, get_page, args)
-    mp.work()
     
-
     results = []
-    for each in mp.result:
-        results += each['results']
+#   single
+    for each in args:
+        res = get_page(**each)
+        if not res:
+            break
+        results.append(res)
+#   mp
+    # mp = MP(4, get_page, args)
+    # mp.work()
+    # for each in mp.result:
+        # results += each['results']
+
     print('[SUC] total num = %d ..' % len(results))
     with open(os.path.join(person_file, 'url.json') , 'w') as f:
         json.dump(results, f)
@@ -55,8 +62,13 @@ def get_img(origin_url):
     mkdir(img_file)
     
     args = [{'url': url, 'path': img_file} for url in urls]
-    mp = MP(4, spider.download, args)
-    mp.work()
+#   single
+    for each in args:
+        spider.download(**each)
+
+#   mp
+    # mp = MP(4, spider.download, args)
+    # mp.work()
 
 def down_link():
     for origin_url in origin_urls:

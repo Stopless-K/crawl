@@ -4,7 +4,7 @@ sys.path.append('spider_lib')
 from multiprocess import MP
 from make_headers import make_headers
 from lib import *
-from IPython import embed
+# from IPython import embed
 
 class Spider(object):
     def __init__(self, fp=None, text=None, cache=None, keys=['Accept', 'Host', 'User-Agent']):
