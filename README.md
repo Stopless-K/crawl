@@ -1,6 +1,15 @@
 # Spider
 Crawing Utils  
 You can use it as submodule or the main project.
+##  introduction
+### class MP
+multiprocess
+### class Spider
+spider
+
+##  problems may in examples
+### 1. __init__ not found
+cp example/xxx/main.py main.py
 
 ##  requirement
 1\*.  a <a href='https://www.google.com/search?&q=computer&oq=computer'>computer</a> with the <a href='http://paste.ubuntu.com/26010673/'>Internet</a>  

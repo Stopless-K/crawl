@@ -67,7 +67,7 @@ def down_img():
         get_img(origin_url)
 
 
-# down_link()
+down_link()
 down_img()
 
 
