@@ -1,5 +1,7 @@
 all:
 	@cat Makefile
+trans:
+	python3 ./example/gg_translate/main.py
 
 meijutt:
 	python3 ./example/meijutt/main.py

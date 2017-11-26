@@ -81,7 +81,7 @@ class Spider(object):
     
     def get_text(self, url, **kwargs):
         response = self.get(url, **kwargs)
-        response.encoding = 'gbk'
+        response.encoding = 'utf-8'
         return response.text
 
     def get_sieve(self, url, a, b=None, **kwargs):
