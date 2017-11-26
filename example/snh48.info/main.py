@@ -33,7 +33,7 @@ def get_person(origin_url):
     mkdir(person_file)
 
     args = [{'origin_url': origin_url, 'pn': pn} \
-            for pn in range(1, 1000)]
+            for pn in range(1, 2)]
 
     
     results = []
@@ -42,7 +42,7 @@ def get_person(origin_url):
         res = get_page(**each)
         if not res:
             break
-        results.append(res)
+        results += res['results']
 #   mp
     # mp = MP(4, get_page, args)
     # mp.work()
