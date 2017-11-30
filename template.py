@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 try:
-    from spider_lib import Spider
+    from crawl import Spider
 except:
     from __init__ import Spider
 
