@@ -1,5 +1,5 @@
 import sys, requests, re, os, json, shelve
-sys.path.append('spider_lib')
+sys.path.append('crawl')
 
 from multiprocess import MP
 from make_headers import make_headers
