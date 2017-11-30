@@ -1,1 +1,0 @@
-example/gg_translate/main.py
