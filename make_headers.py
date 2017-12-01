@@ -16,7 +16,7 @@ def make_headers(fp, text, keys):
         x = each.find(':')
         if x == -1:
             continue
-        if each[:x] in keys:
+        if len(keys) == 0 or each[:x] in keys:
             headers[each[:x]] = each[x+1:]
     return headers
 
