@@ -99,11 +99,46 @@ class Spider(object):
                 replace('[', '(').replace(']', ')').replace(' ', '')
         return self.sieve(result, 'src="(.*?%s)' % suffix)
 
-    def download(self, url, path):
-        print(url, path)
-        name = os.path.join(path, url.split('/')[-1])
+    def download(self, url, path, debug=False):
+        if path.split('/')[-1] == url.split('/')[-1]:
+            name = path
+        else:
+            name = os.path.join(path, url.split('/')[-1])
         print('[OPR] Downloading %s to %s ..' % (url, name))
-        data = self.get(url).content
-        with open(name, 'wb') as f:
-            f.write(data)
-        return True
+        if not debug:
+            data = self.get(url).content
+            with open(name, 'wb') as f:
+                f.write(data)
+
+    def download_recursion(self, origin_url, save_path, get_files, is_dir):
+        mkdir(save_path)
+        q = [[origin_url, add_suffix(save_path, origin_url)]]
+        vis = set()
+        vis.add(origin_url)
+        cur, cnt = 0, 1
+        while cur < cnt:
+            url, path = q[cur]
+            cur += 1
+            if is_dir(url):
+                mkdir(path)
+                urls = get_files(url)
+                for each in urls:
+                    if not each in vis:
+                        vis.add(each)
+                        q.append([each, add_suffix(path, each)])
+                        cnt += 1
+            else:
+                self.download(url, path, debug=False)
+
+def add_suffix(path, url):
+    data = url.split('/')
+    data.reverse()
+    for each in data:
+        if each != '':
+            return os.path.join(path, each)
+    print('[ERR] %s has not suffix ..' % url)
+    exit(-1)
+
+def mkdir(path):
+    if not os.path.isdir(path):
+        os.mkdir(path)
