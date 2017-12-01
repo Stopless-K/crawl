@@ -38,16 +38,16 @@ def get_person(origin_url):
     
     results = []
 #   single
-    for each in args:
-        res = get_page(**each)
-        if not res:
-            break
-        results += res['results']
+    # for each in args:
+        # res = get_page(**each)
+        # if not res:
+            # break
+        # results += res['results']
 #   mp
-    # mp = MP(4, get_page, args)
-    # mp.work()
-    # for each in mp.result:
-        # results += each['results']
+    mp = MP(4, get_page, args)
+    mp.work()
+    for each in mp.result:
+        results += each['results']
 
     print('[SUC] total num = %d ..' % len(results))
     with open(os.path.join(person_file, 'url.json') , 'w') as f:
@@ -63,12 +63,12 @@ def get_img(origin_url):
     
     args = [{'url': url, 'path': img_file} for url in urls]
 #   single
-    for each in args:
-        spider.download(**each)
+    # for each in args:
+        # spider.download(**each)
 
 #   mp
-    # mp = MP(4, spider.download, args)
-    # mp.work()
+    mp = MP(4, spider.download, args)
+    mp.work()
 
 def down_link():
     for origin_url in origin_urls:
