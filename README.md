@@ -1,7 +1,17 @@
 # Crawl
 Crawing Utils  
 You can use it as submodule or the main project.
-##  introduction
+## how to use git to create submodule
+    0.  download and install git
+    1.  cd [your project]
+    2.  git init #if not a git project
+    3.  git submodule add https://github.com/indestinee/crawl.git
+## simple use
+    download to you project
+## my environment
+    macOS High Sierra 10.13.1
+    Python 3.6.3
+## introduction
 ### Class MP
 #### multiprocessing
 	file: ./multiprocess.py  
