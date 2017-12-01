@@ -5,7 +5,7 @@ You can use it as submodule or the main project.
 ### Class MP
 #### multiprocessing
 	file: ./multiprocess.py  
-	you can change import to use 	threading
+	you can change import to use threading
 #### initialize
 	mp = MP(num_process, func, data)
 #### run
@@ -40,30 +40,29 @@ e.g.
 		-[]: load all key
 		-['xx', 'aa']: load 'xx', 'aa' only
 #### run
+	if no headers, it will use spider.headers
 ##### spider.post
 	request.post
 ##### spider.get
 	request.get 
-	if no headers, it will use spider.headers
 ##### spider.change_headers
 	spider.change_headers(fp, text, keys)
-	change spider.headers
 ##### spider.get_text
+    spider.get_text(url)
 	return text
 ##### spider.get_sieve
-	return text in url satisfy a(.*?)b or a (re)
+    spider.get_sieve(url, a, b='')
+	return text in url satisfy a(.*?)b or a (regular expression)
 ##### spider.get_img
 	spider.get_img(url, suffixs)
-	suffixs default: ['jpg', 'png', 'gif', 'jpegf']
+	+suffixs: default=['jpg', 'png', 'gif', 'jpegf']
 ##### spider.download
 	spider.download(url, path)
 ##### spider.download_recursion
 	spider.download_recursion(origin_url, save_path, get_files, is_dir)
-	get_files: function to get all files in current url
-	is_dir: function to determine whether current url is a director
-	
+	+get_files: function to get all files in current url
+    +is_dir: function to determine whether current url is a director
 	see ./example/recursion/main.py for details
-	
 
 ##  issues
 
